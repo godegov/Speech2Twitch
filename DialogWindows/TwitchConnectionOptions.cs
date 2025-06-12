@@ -31,6 +31,7 @@ namespace Speech2Twitch
 			tmp.LoginName = this.UserLogin.Text;
 			tmp.TwitchToken = this.Token.Text;
 			NewValuesSet(tmp);
+			this.Close();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

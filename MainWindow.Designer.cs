@@ -168,7 +168,7 @@
 			Controls.Add(menuStrip1);
 			MainMenuStrip = menuStrip1;
 			Name = "MainWindow";
-			Text = "Form1";
+			Text = "Twitch to speech (или наоборот)";
 			menuStrip1.ResumeLayout(false);
 			menuStrip1.PerformLayout();
 			ResumeLayout(false);

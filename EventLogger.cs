@@ -14,7 +14,7 @@ namespace Speech2Twitch
 
 		public EventLogger()
 		{}
-		private const int MaxLogLines = 6;
+		private const int MaxLogLines = 16;
 		private TextBox? txtLog;
 
 		public void SetTextBox(TextBox InTextBox)

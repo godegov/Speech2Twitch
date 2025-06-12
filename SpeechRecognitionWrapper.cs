@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio;
 using NAudio.Wave;
 using TwitchLib.Client;
 using TwitchLib.Client.Models;
@@ -173,18 +174,19 @@ namespace Speech2Twitch
 			if (!IsValidVoskModel(modelPath))
 				throw new Exception("Папка не содержит допустимую модель Vosk");
 
-			Vosk.Vosk.SetLogLevel(4);
+			Vosk.Vosk.SetLogLevel(0);
 			var model = new Model(modelPath);
+			EventLogger.Instance.Log("Новая модель загружена");
 
 			LanguageModel?.Dispose();
 			LanguageModel = model;
-			Start();
-			EventLogger.Instance.Log("Новая модель загружена");
+			if (Start())
+				EventLogger.Instance.Log("Запущен звуковой драйвер. Можно говорить.");
 
 			return true;
 		}
 
-		public void Start()
+		public bool Start()
 		{
 			Vosk.Vosk.SetLogLevel(0);
 			SpeechRecognizer = new VoskRecognizer(LanguageModel, 16000.0f);
@@ -192,9 +194,32 @@ namespace Speech2Twitch
 			SpeechRecognizer.SetWords(true);
 
 			WaveAudioInput = new WaveInEvent();
-			WaveAudioInput.WaveFormat = new WaveFormat(16000, 1);
-			WaveAudioInput.DataAvailable += OnDataAvailable;
-			WaveAudioInput.StartRecording();
+			if (WaveIn.DeviceCount > 0)
+			{
+				WaveAudioInput.WaveFormat = new WaveFormat(16000, 1);
+				WaveAudioInput.DataAvailable += OnDataAvailable;
+				try
+				{
+					WaveAudioInput.StartRecording();
+				}
+				catch (MmException mmEx)
+				{
+					EventLogger.Instance.Log($"Ошибка NAudio: {mmEx.Message}");
+					return false;
+				}
+				catch (InvalidOperationException invOpEx)
+				{
+					EventLogger.Instance.Log($"Ошибка работы с устройством записи: {invOpEx.Message}");
+					return false;
+				}
+			}
+			else
+			{
+				EventLogger.Instance.Log("Нету микрофонов, похоже. Воткните хотябы один, тогда буду работать");
+				return false;
+			}
+
+			return true;
 		}
 
 		public void Stop()
