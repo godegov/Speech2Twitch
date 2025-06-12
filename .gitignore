@@ -1,0 +1,50 @@
+# ========== Основное .NET / Visual Studio ==========
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+.vscode/
+*.csproj.user
+
+# ========== Build ==========
+bin/
+obj/
+Debug/
+Release/
+*.log
+
+# ========== NuGet ==========
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+
+# ========== Публикация ==========
+*.publish/
+publish/
+*.exe
+*.dll
+*.pdb
+*.apphost.exe
+
+# ========== Rider ==========
+.idea/
+
+# ========== Системные ==========
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========== Логи ==========
+logs/
+*.log
+
+# ========== Vosk ==========
+# Исключаем весомые модели, если не хочешь класть их в репозиторий
+vosk-model*
+*.zip
+
+# ========== Скрипты ==========
+!BuildRelease.bat
+!PrepareDeveloper.bat
