@@ -21,7 +21,6 @@ namespace Speech2Twitch
 			InitializeComponent();
 			this.ChannelName.Text = inTwitchConnectionDescriptor.StreamChannelName;
 			this.UserLogin.Text = inTwitchConnectionDescriptor.LoginName;
-			this.Token.Text = inTwitchConnectionDescriptor.TwitchToken;
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -29,7 +28,6 @@ namespace Speech2Twitch
 			DataStructures.TwitchConnectionDescriptor tmp = new DataStructures.TwitchConnectionDescriptor();
 			tmp.StreamChannelName = this.ChannelName.Text;
 			tmp.LoginName = this.UserLogin.Text;
-			tmp.TwitchToken = this.Token.Text;
 			NewValuesSet(tmp);
 			this.Close();
 		}

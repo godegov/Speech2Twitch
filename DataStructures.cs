@@ -22,7 +22,6 @@ namespace Speech2Twitch
 		public struct TwitchConnectionDescriptor
 		{
 			public string LoginName{ get; set; }
-			public string TwitchToken{ get; set; }
 			public string StreamChannelName{ get; set; }
 		}
 

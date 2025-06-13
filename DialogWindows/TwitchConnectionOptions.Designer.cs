@@ -33,10 +33,7 @@
 			button2 = new Button();
 			ChannelName = new TextBox();
 			label2 = new Label();
-			label3 = new Label();
 			UserLogin = new TextBox();
-			Token = new TextBox();
-			linkLabel1 = new LinkLabel();
 			SuspendLayout();
 			// 
 			// label1
@@ -50,7 +47,7 @@
 			// 
 			// button1
 			// 
-			button1.Location = new Point(587, 389);
+			button1.Location = new Point(552, 227);
 			button1.Name = "button1";
 			button1.Size = new Size(201, 34);
 			button1.TabIndex = 1;
@@ -60,7 +57,7 @@
 			// 
 			// button2
 			// 
-			button2.Location = new Point(332, 389);
+			button2.Location = new Point(294, 227);
 			button2.Name = "button2";
 			button2.Size = new Size(199, 34);
 			button2.TabIndex = 2;
@@ -84,15 +81,6 @@
 			label2.TabIndex = 4;
 			label2.Text = "Логин пользователя чата:";
 			// 
-			// label3
-			// 
-			label3.AutoSize = true;
-			label3.Location = new Point(26, 219);
-			label3.Name = "label3";
-			label3.Size = new Size(216, 25);
-			label3.TabIndex = 5;
-			label3.Text = "Токен пользователя чата";
-			// 
 			// UserLogin
 			// 
 			UserLogin.Location = new Point(26, 144);
@@ -100,32 +88,12 @@
 			UserLogin.Size = new Size(452, 31);
 			UserLogin.TabIndex = 6;
 			// 
-			// Token
-			// 
-			Token.Location = new Point(26, 247);
-			Token.Name = "Token";
-			Token.Size = new Size(452, 31);
-			Token.TabIndex = 7;
-			// 
-			// linkLabel1
-			// 
-			linkLabel1.AutoSize = true;
-			linkLabel1.Location = new Point(245, 219);
-			linkLabel1.Name = "linkLabel1";
-			linkLabel1.Size = new Size(220, 25);
-			linkLabel1.TabIndex = 8;
-			linkLabel1.TabStop = true;
-			linkLabel1.Text = "twitchtokengenerator.com";
-			// 
 			// TwitchConnectionOptions
 			// 
 			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
-			Controls.Add(linkLabel1);
-			Controls.Add(Token);
+			ClientSize = new Size(800, 284);
 			Controls.Add(UserLogin);
-			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(ChannelName);
 			Controls.Add(button2);
@@ -146,9 +114,6 @@
 		private Button button2;
 		private TextBox ChannelName;
 		private Label label2;
-		private Label label3;
 		private TextBox UserLogin;
-		private TextBox Token;
-		private LinkLabel linkLabel1;
 	}
 }

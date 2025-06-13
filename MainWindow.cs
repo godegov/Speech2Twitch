@@ -9,7 +9,7 @@ namespace Speech2Twitch
 	{
 		// Some default stuff
 		static public DataStructures.TwitchConnectionDescriptor DefaulTwitchConnectionDescriptor = new()
-		{ LoginName = "", TwitchToken = "", StreamChannelName = "Margaret_Wolf" };
+		{ LoginName = "", StreamChannelName = "Margaret_Wolf" };
 		static public DataStructures.MessageDescriptors DefaulMessageDescriptors = new()
 		{ MessageSend = "отправить", MessageSendVoice = "озвучить", MessageSendVoicePrefix = "!/", MessageClear = "очистить", LiteralDot = "точка", LiteralComma = "запятая" };
 		static public DataStructures.SpeechRecognitionDescriptor DefaulSpeechRecognitionDescriptor = new()
@@ -28,7 +28,6 @@ namespace Speech2Twitch
 		private string ConfigPath;
 		public MainWindow()
 		{
-			this.Name = "Speech to Twitch";
 			string configFolder = Path.Combine(
 				Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
 				"SpeechToTwitch"
@@ -118,7 +117,7 @@ namespace Speech2Twitch
 		{
 			this.TwitchConnectionDescriptor = NewTwitchConnectionDescriptor;
 			DataStructures.Serializer.Serialize(ConfigPath, MessageDescriptors, TwitchConnectionDescriptor, SpeechRecognitionDescriptor);
-			TwitchMsgr.Connect(TwitchConnectionDescriptor);
+			TwitchMsgr.Connect(TwitchConnectionDescriptor, this);
 		}
 
 		private void MessageSendOptionsClick(object sender, EventArgs e)
@@ -155,7 +154,7 @@ namespace Speech2Twitch
 
 		private void TwitchConnect_Click(object sender, EventArgs e)
 		{
-			TwitchMsgr.Connect(TwitchConnectionDescriptor);
+			TwitchMsgr.Connect(TwitchConnectionDescriptor, this);
 		}
 	}
 }
